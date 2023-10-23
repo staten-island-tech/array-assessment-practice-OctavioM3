@@ -86,17 +86,48 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
-
+books.forEach((books) => console.log(books.authorFirst + books.authorLast, 'wrote ' + books.name + ' in ' + books.publishDate));
 //Sort books from oldest to most recent
-
+const sortBooks = books.sort((a, b) => a.publishDate - b.publishDate);
+console.log(sortBooks);
 //sort books alphabetically
+const sorttitles = books.sort((a, b) => {
+  const nameA = a.name.toUpperCase();
+  const nameB = b.name.toUpperCase();
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
 
+  return 0;
+});
+console.log(sorttitles);
 //Find who wrote War and Peace
-
+const WarandPeace = books.filter((books) => books.name == "War and Peace");
+console.log(WarandPeace);
 //how many books were written before 1900?
-
+const BooksBefore1900 = books.filter((books) => books.publishDate <= 1900);
+console.log(BooksBefore1900);
 //was there at least one book published within the last 100 years?
+const BooksPublishedWithin100years = books.filter((books) => books.publishDate >= 1923)
+console.log(BooksPublishedWithin100years);
 
+const currentYear = 2023;
+const isBookPublishedWithinLast100Years = books.some(books => currentYear - books.publishDate <= 100);
+
+if (isBookPublishedWithinLast100Years) {
+  console.log("Yes, at least one book was published within the last 100 years.");
+} else {
+  console.log("No, there were no books published within the last 100 years.");
+}
 //was every book published within the last 100 years?
+const areAllBooksPublishedWithinLast100Years = books.every(book => currentYear - book.publishDate <= 100);
 
+if (areAllBooksPublishedWithinLast100Years) {
+  console.log("Yes, every book was published within the last 100 years.");
+} else {
+  console.log("No, not every book was published within the last 100 years.");
+}
 //print a list of books that "includes" the genre historical
