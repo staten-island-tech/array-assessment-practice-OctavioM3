@@ -123,7 +123,7 @@ if (isBookPublishedWithinLast100Years) {
   console.log("No, there were no books published within the last 100 years.");
 }
 //was every book published within the last 100 years?
-const areAllBooksPublishedWithinLast100Years = books.every(book => currentYear - book.publishDate <= 100);
+const areAllBooksPublishedWithinLast100Years = books.every(books => currentYear - books.publishDate <= 100);
 
 if (areAllBooksPublishedWithinLast100Years) {
   console.log("Yes, every book was published within the last 100 years.");
@@ -131,3 +131,8 @@ if (areAllBooksPublishedWithinLast100Years) {
   console.log("No, not every book was published within the last 100 years.");
 }
 //print a list of books that "includes" the genre historical
+const historicalBooks = books.filter(book => book.genre.includes("historical"));
+
+historicalBooks.forEach(book => {
+  console.log(book.name);
+});
